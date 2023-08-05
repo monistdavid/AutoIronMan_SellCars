@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Chat4S</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+
+    <!-- External Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/line-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.min.css') }}"/>
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/job-1.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/kyc-2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-1.css') }}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/icon-114x114.png">
+
+
+</head>
+<body>
+
+<div class="ugf-wrapper">
+    <div class="logo">
+        <img src="images/logo.png" class="img-fluid logo-white" alt="">
+        <img src="images/logo-dark.png" class="img-fluid logo-black" alt="">
+    </div>
+    <div class="ugf-content-block" style="position: fixed;">
+        <div class="content-block">
+            <h1>We are creative agency <br> Let’s Join with us !</h1>
+            <p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain
+                but because.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 offset-lg-7">
+                <div class="ufg-job-application-wrapper pt200">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                             aria-valuemax="100"><span class="step-text"><span class="current-step"></span> / <span
+                                class="total-step"></span> 完成</span></div>
+                    </div>
+                    <div class="form-steps"></div>
+                    <div class="form-steps"></div>
+                    <div class="form-steps active">
+                        <a href="{{ url_for('index.vehicle', vin=vin)}}" class="prev"><i class="las la-arrow-left"></i>上一页</a>
+                        <h3>其他照片</h3>
+                        <form action="{{ url_for('index.image', vin=vin)}}" method="post" class="ugf-form"
+                              enctype="multipart/form-data">
+                            <div class="input-block">
+                                <div class="documents-upload-wrap">
+                                    <div class="label">Select Document type</div>
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" id="passport-tab" data-toggle="tab"
+                                               href="#passport" role="tab" aria-controls="passport"
+                                               aria-selected="true">损坏图片</a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="nid-tab" data-toggle="tab" href="#nid" role="tab"
+                                               aria-controls="nid" aria-selected="false">其他图片</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="passport" role="tabpanel"
+                                             aria-labelledby="home-tab">
+                                            <div class="documents-upload">
+                                                <div class="upload-item">
+                                                    <input type="file" id="input1" class="input-file" accept="image/*"
+                                                           hidden/>
+                                                    <label class="btn-upload" for="input1" role="button">
+                                                        <img src="images/cloud.png">
+                                                        <div id="p-input1" class="preview-box"></div>
+                                                    </label>
+                                                    <div class="upload-direction"><span
+                                                            class="text">Damage</span><a href="#"><img
+                                                            src="images/download.png" alt=""></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="nid" role="tabpanel" aria-labelledby="nid-tab">
+                                            <div class="documents-upload">
+                                                <div class="upload-item">
+                                                    <input type="file" id="input4" class="input-file" accept="image/*"
+                                                           hidden/>
+                                                    <label class="btn-upload" for="input4" role="button">
+                                                        <img src="images/cloud.png">
+                                                        <div id="p-input4" class="preview-box"></div>
+                                                    </label>
+                                                    <div class="upload-direction"><span
+                                                            class="text">Additional</span><a href="#"><img
+                                                            src="images/download.png" alt=""></a></div>
+                                                </div>
+                                                <div class="upload-item">
+                                                    <input type="file" id="input5" class="input-file" accept="image/*"
+                                                           hidden/>
+                                                    <label class="btn-upload" for="input5" role="button">
+                                                        <img src="images/cloud.png">
+                                                        <div id="p-input5" class="preview-box"></div>
+                                                    </label>
+                                                    <div class="upload-direction"><span
+                                                            class="text">Additional</span><a href="#"><img
+                                                            src="images/download.png" alt=""></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn">提交</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <!--        <div class="social-links">-->
+        <!--            <a href="#"><i class="lab la-facebook-f"></i></a>-->
+        <!--            <a href="#"><i class="lab la-twitter"></i></a>-->
+        <!--            <a href="#"><i class="lab la-linkedin-in"></i></a>-->
+        <!--            <a href="#"><i class="lab la-instagram"></i></a>-->
+        <!--        </div>-->
+        <div class="copyright">
+            <p>Copyright © 2023 GentleCarmen. All Rights Reserved</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+<script>
+$(document).ready(function() {
+	'use strict';
+
+  var progress = document.querySelectorAll('.form-steps');
+  var progressUnit = 100 / progress.length;
+  var progressWidth = 100;
+  var currentStep = 4;
+
+  $('.total-step').html(progress.length);
+  $('.current-step').html(currentStep);
+
+  $('.progress-bar').width(progressWidth + '%');
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Chat4S</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+
+    <!-- External Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/line-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.min.css') }}"/>
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/job-1.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/kyc-2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-1.css') }}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/icon-114x114.png">
+
+
+</head>
+<body>
+
+<div class="ugf-wrapper">
+    <div class="logo">
+        <img src="images/logo.png" class="img-fluid logo-white" alt="">
+        <img src="images/logo-dark.png" class="img-fluid logo-black" alt="">
+    </div>
+    <div class="ugf-content-block" style="position: fixed;">
+        <div class="content-block">
+            <h1>We are creative agency <br> Let’s Join with us !</h1>
+            <p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain
+                but because.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 offset-lg-7">
+                <div class="ufg-job-application-wrapper pt200">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                             aria-valuemax="100"><span class="step-text"><span class="current-step"></span> / <span
+                                class="total-step"></span> 完成</span></div>
+                    </div>
+                    <div class="form-steps"></div>
+                    <div class="form-steps"></div>
+                    <div class="form-steps active">
+                        <a href="{{ url_for('index.vehicle', vin=vin)}}" class="prev"><i class="las la-arrow-left"></i>上一页</a>
+                        <h3>车辆照片</h3>
+                        <form action="{{ url_for('index.image', vin=vin)}}" method="post" class="ugf-form"
+                              enctype="multipart/form-data">
+                            <div class="input-block">
+                                <div class="documents-upload-wrap">
+                                    <div class="label">里程表</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input1" accept="image/*" name="Odometer" hidden
+                                                   onchange="uploadImage(this, 'Odometer', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input1" role="button"
+                                                   {% if form_data.get('Odometer') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('Odometer', '')) }}'); background-size: contain;
+                                            background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoOdometer.jpg') }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input1" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text">启动车辆以显示任何警告灯，并打开引擎盖。</span>
+                                                <label for="input1" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">前座</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input2" class="input-file" accept="image/*"
+                                                   hidden name="FrontSeats"
+                                                   onchange="uploadImage(this, 'FrontSeats', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input2" role="button"
+                                                   {% if form_data.get('FrontSeats') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('FrontSeats', '')) }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoFrontSeatsB.jpg') }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input2" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text">拍摄前排座椅，并包含所有座椅调节按钮</span>
+                                                <label for="input2" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">车顶内饰</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input3" class="input-file" accept="image/*"
+                                                   hidden name="InteriorRoof"
+                                                   onchange="uploadImage(this, 'InteriorRoof', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input3" role="button"
+                                                   {% if form_data.get('InteriorRoof') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('InteriorRoof', '')) }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoInteriorRoof.jpg') }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input3" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text">如有天窗，请确保照片中包含天窗</span>
+                                                <label for="input3" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">驾驶员前门</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input4" class="input-file" accept="image/*"
+                                                   hidden name="DriverFrontDoor"
+                                                   onchange="uploadImage(this, 'DriverFrontDoor', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input4" role="button"
+                                                   {% if form_data.get('DriverFrontDoor') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('DriverFrontDoor', '')) }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoDriverFrontDoor.jpg') }}');
+                                            background-size: contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input4" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text">确保所有车门功能可见</span>
+                                                <label
+                                                        for="input4" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">发动机舱驾驶员侧</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input5" class="input-file" accept="image/*"
+                                                   hidden name="DriverApron"
+                                                   onchange="uploadImage(this, 'DriverApron', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input5" role="button"
+                                                   {% if form_data.get('DriverApron') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('DriverApron', '')) }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoDriverApron.jpg') }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input5" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text">站在车辆前方，打开引擎盖，相机略微向右倾斜（驾驶员侧），以确保展示所有可见部件。<br>（如图所示）</span>
+                                                <label for="input5" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">发动机舱乘客侧</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input6" class="input-file" accept="image/*"
+                                                   hidden name="PassengerApron"
+                                                   onchange="uploadImage(this, 'PassengerApron', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input6" role="button"
+                                                   {% if form_data.get('PassengerApron') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('PassengerApron', '')) }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoPassengerApron.jpg') }}');
+                                            background-size: contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input6" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text">站在车辆前方，打开引擎盖，相机略微向左倾斜（乘客侧），以确保展示所有可见部件。<br>（如图所示）</span>
+                                                <label for="input6" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">驾驶员前角</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input7" class="input-file" accept="image/*"
+                                                   hidden name="DriverFrontCorner"
+                                                   onchange="uploadImage(this, 'DriverFrontCorner', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input7" role="button"
+                                                   {% if form_data.get('DriverFrontCorner') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('DriverFrontCorner', '')) }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoDriverFrontCorner.jpg') }}');
+                                            background-size: contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input7" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text">尽量捕捉整车的全貌</span>
+                                                <label for="input7" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">后座区域</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input8" class="input-file" accept="image/*"
+                                                   hidden name="RearSeatArea"
+                                                   onchange="uploadImage(this, 'RearSeatArea', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input8" role="button"
+                                                   {% if form_data.get('RearSeatArea') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('RearSeatArea', '')) }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoRearSeatArea.jpg') }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input8" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text">确保所有后部特征和门锁是可见的</span>
+                                                <label for="input8" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">仪表板（从后座）</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input9" class="input-file" accept="image/*"
+                                                   hidden name="Dashboard"
+                                                   onchange="uploadImage(this, 'Dashboard', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input9" role="button"
+                                                   {% if form_data.get('Dashboard') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('Dashboard', '')) }}'); background-size: contain;
+                                            background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoDashboard.jpg') }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input9" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text">从后座拍摄以获得仪表盘，方向盘，中控以及挡位所有功能</span>
+                                                <label for="input9" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">乘客侧后角</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input10" class="input-file" accept="image/*"
+                                                   hidden name="PassengerRearCorner"
+                                                   onchange="uploadImage(this, 'PassengerRearCorner', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input10" role="button"
+                                                   {% if form_data.get('PassengerRearCorner') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('PassengerRearCorner', '')) }}');
+                                            background-size: contain; background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoPassengerRearCorner.jpg') }}');
+                                            background-size: contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input10" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text">尽量拍摄整辆车</span>
+                                                <label
+                                                        for="input10" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">行李箱区域</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input11" class="input-file" accept="image/*"
+                                                   hidden name="TrunkArea"
+                                                   onchange="uploadImage(this, 'TrunkArea', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input11" role="button"
+                                                   {% if form_data.get('TrunkArea') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('TrunkArea', '')) }}'); background-size: contain;
+                                            background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoTrunkArea.jpg') }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input11" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text">包括整个行李箱区域，包括后备箱盖和拖车钩</span>
+                                                <label for="input11" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">车尾乘客侧</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input12" class="input-file" accept="image/*"
+                                                   hidden name="PassengerSideQuarter"
+                                                   onchange="uploadImage(this, 'PassengerSideQuarter', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input12" role="button"
+                                                   {% if form_data.get('PassengerSideQuarter') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('PassengerSideQuarter', '')) }}');
+                                            background-size: contain; background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoPassengerQuarterPanelRight.jpg') }}');
+                                            background-size: contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input12" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text"> 站在车尾，打开后备箱，相机略微向右倾斜，确保图中红圈接缝处可见。</span>
+                                                <label for="input12" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">车尾驾驶员侧</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input13" class="input-file" accept="image/*"
+                                                   hidden name="DriverSideQuarter"
+                                                   onchange="uploadImage(this, 'DriverSideQuarter', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input13" role="button"
+                                                   {% if form_data.get('DriverSideQuarter') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('DriverSideQuarter', '')) }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoPassengerQuarterPanelLeft.jpg') }}');
+                                            background-size: contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input13" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text">站在车尾，打开后备箱，相机略微向左倾斜，确保图中红圈接缝处可见。</span>
+                                                <label
+                                                        for="input13" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="label">驾驶员后轮</div>
+                                    <div class="documents-upload">
+                                        <div class="upload-item">
+                                            <input type="file" id="input14" class="input-file" accept="image/*"
+                                                   hidden name="DriverRearWheel"
+                                                   onchange="uploadImage(this, 'DriverRearWheel', '{{ vin }}')"/>
+                                            <label class="btn-upload" for="input14" role="button"
+                                                   {% if form_data.get('DriverRearWheel') %}
+                                            style="background: url('{{ url_for('static',
+                                            filename=form_data.get('DriverRearWheel', '')) }}'); background-size:
+                                            contain; background-repeat: no-repeat;"
+                                            {% else %}
+                                            style="background: url('{{ url_for('static',
+                                            filename='images/vehicle/photoDriverRearWheel.jpg') }}');
+                                            background-size: contain; background-repeat: no-repeat;"
+                                            {% endif %}
+                                            >
+                                            <div id="p-input14" class="preview-box"></div>
+                                            </label>
+                                            <div class="upload-direction"><span
+                                                    class="text"> 确保胎纹和轮胎尺寸可见</span>
+                                                <label for="input14" style="cursor: pointer;"><img
+                                                        src="{{ url_for('static', filename='images/cloud.png') }}"
+                                                        alt=""></label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn" name="image-all" type="submit"><span>提交</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <!--        <div class="social-links">-->
+        <!--            <a href="#"><i class="lab la-facebook-f"></i></a>-->
+        <!--            <a href="#"><i class="lab la-twitter"></i></a>-->
+        <!--            <a href="#"><i class="lab la-linkedin-in"></i></a>-->
+        <!--            <a href="#"><i class="lab la-instagram"></i></a>-->
+        <!--        </div>-->
+        <div class="copyright">
+            <p>Copyright © 2023 GentleCarmen. All Rights Reserved</p>
+        </div>
+    </div>
+    <div id="loading-spinner-overlay" style="display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+<!-- Add this script to handle the form submission -->
+
+<script>
+function uploadImage(inputElement, elementName, vin) {
+  const file = inputElement.files[0];
+  const formData = new FormData();
+  formData.append(elementName, file);
+
+  // Show the loading spinner while the image is being uploaded
+  const loadingSpinnerOverlay = document.getElementById('loading-spinner-overlay');
+  loadingSpinnerOverlay.style.display = 'flex'; // Show the overlay container
+
+  // Use Fetch API to send the image to the Flask backend
+  fetch(`/image/${vin}`, {
+    method: 'POST',
+    body: formData,
+  })
+    .then((response) => {
+      if (response.ok) {
+        // Reload the page to update the image on the frontend
+        console.log('ok');
+        window.location.reload();
+      } else {
+        // Handle error if needed
+        console.error('Image upload failed.');
+      }
+    })
+    .catch((error) => {
+      console.error('Image upload failed:', error);
+    })
+    .finally(() => {
+      // Hide the loading spinner when the image upload is done (success or failure)
+      loadingSpinnerOverlay.style.display = 'none'; // Hide the overlay container
+    });
+}
+
+
+
+
+
+</script>
+<script>
+$(document).ready(function() {
+	'use strict';
+
+  var progress = document.querySelectorAll('.form-steps');
+  var progressWidth = 75;
+  var currentStep = 3;
+
+  $('.total-step').html(progress.length);
+  $('.current-step').html(currentStep);
+
+  $('.progress-bar').width(progressWidth + '%');
+})
+
+
+
+
+
+</script>
+</body>
+</html>

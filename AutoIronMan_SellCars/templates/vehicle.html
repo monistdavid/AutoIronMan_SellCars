@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Chat4S</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+
+    <!-- External Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/line-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.min.css') }}"/>
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/job-1.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/kyc-2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-1.css') }}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/icon-114x114.png">
+
+
+</head>
+<body>
+
+<div class="ugf-wrapper">
+    <div class="logo">
+        <img src="images/logo.png" class="img-fluid logo-white" alt="">
+        <img src="images/logo-dark.png" class="img-fluid logo-black" alt="">
+    </div>
+    <div class="ugf-content-block" style="position: fixed;">
+        <div class="content-block">
+            <h1>We are creative agency <br> Let’s Join with us !</h1>
+            <p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain
+                but because.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 offset-lg-7">
+                <div class="ufg-job-application-wrapper pt200">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                             aria-valuemax="100"><span class="step-text"><span class="current-step"></span> / <span
+                                class="total-step"></span> 完成</span></div>
+                    </div>
+                    <div class="form-steps"></div>
+                    <div class="form-steps active">
+                        <a href="{{ url_for('index.index')}}" class="prev"><i class="las la-arrow-left"></i>上一页</a>
+                        <h3>车辆信息</h3>
+                        <h6>里程数</h6>
+                        <form action="{{ url_for('index.vehicle', vin=vin)}}" method="post" style="margin-top: 5px;"
+                              class="job-application-form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="input-mile" name="input-mile"
+                                       value="{{ form_data.get('input-mile', '') }}" required>
+                                <label for="input-mile">里程数</label>
+                            </div>
+                            <div class="form-group radio-group">
+                                <div class="custom-radio">
+                                    <input type="radio" name="mile-disclosure" class="custom-control-input"
+                                           id="mile-disclosure-radio1" value="Actual Miles" required
+                                           {% if form_data.get('mile_disclosure') == 'Actual Miles' %} checked {% endif
+                                    %}>
+                                    <label class="custom-control-label" for="mile-disclosure-radio1">实际里程</label>
+                                </div>
+                            </div>
+                            <div class="form-group radio-group">
+                                <div class="custom-radio">
+                                    <input type="radio" name="mile-disclosure" class="custom-control-input"
+                                           id="mile-disclosure-radio2" value="Display Needs Service" required
+                                           {% if form_data.get('mile_disclosure') == 'Display Needs Service' %} checked
+                                    {% endif %}>
+                                    <label class="custom-control-label" for="mile-disclosure-radio2">引擎灯亮</label>
+                                </div>
+                            </div>
+                            <div class="form-group radio-group">
+                                <div class="custom-radio">
+                                    <input type="radio" name="mile-disclosure" class="custom-control-input"
+                                           id="mile-disclosure-radio3" value="Exceeds Mechanical Limits" required
+                                           {% if form_data.get('mile_disclosure') == 'Exceeds Mechanical Limits' %}
+                                    checked {% endif %}>
+
+                                    <label class="custom-control-label" for="mile-disclosure-radio3">超出引擎里程极限</label>
+                                </div>
+                            </div>
+                            <div class="form-group radio-group">
+                                <div class="custom-radio">
+                                    <input type="radio" name="mile-disclosure" class="custom-control-input"
+                                           id="mile-disclosure-radio4" value="Inoperable" required
+                                           {% if form_data.get('mile_disclosure') == 'Inoperable' %} checked {% endif
+                                    %}>
+                                    <label class="custom-control-label" for="mile-disclosure-radio4">引擎无法启动</label>
+                                </div>
+                            </div>
+                            <div class="form-group radio-group">
+                                <div class="custom-radio">
+                                    <input type="radio" name="mile-disclosure" class="custom-control-input"
+                                           id="mile-disclosure-radio5" value="Possible Rollback" required
+                                           {% if form_data.get('mile_disclosure') == 'Possible Rollback' %} checked {%
+                                    endif %}>
+                                    <label class="custom-control-label" for="mile-disclosure-radio5">可能存在调表</label>
+                                </div>
+                            </div>
+                            <div class="form-group radio-group">
+                                <div class="custom-radio">
+                                    <input type="radio" name="mile-disclosure" class="custom-control-input"
+                                           id="mile-disclosure-radio6" value="Replaced" required
+                                           {% if form_data.get('mile_disclosure') == 'Replaced' %} checked {% endif %}>
+                                    <label class="custom-control-label" for="mile-disclosure-radio6">更换过引擎</label>
+                                </div>
+                            </div>
+                            <h6>驱动</h6>
+                            <div style="margin-top: 5px;" class="form-group country-select">
+                                <div class="select-input choose-country">
+                                    <span></span>
+                                    <select id="drive" name="drive" class="form-control" required>
+                                        <option value="2" {% if form_data.get(
+                                        'drive') == '2' %}selected{% endif %}>2轮驱动</option>
+                                        <option value="4" {% if form_data.get(
+                                        'drive') == '4' %}selected{% endif %}>4轮驱动/全轮驱动</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h6>变速器</h6>
+                            <div style="margin-top: 5px;" class="form-group country-select">
+                                <div class="select-input choose-country">
+                                    <span></span>
+                                    <select id="transmission" name="transmission" class="form-control" required>
+                                        <option value="A" {% if form_data.get(
+                                        'transmission') == 'A' %}selected{% endif %}>自动挡</option>
+                                        <option value="M" {% if form_data.get(
+                                        'transmission') == 'M' %}selected{% endif %}>手动挡</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h6>车况</h6>
+                            <div style="margin-top: 5px;" class="form-group country-select">
+                                <div class="select-input choose-country">
+                                    <span></span>
+                                    <select id="conditions" name="conditions" class="form-control" required>
+                                        <option value="O" {% if form_data.get(
+                                        'conditions') == 'O' %}selected{% endif %}>
+                                        优秀 - 机械、外观和内饰都处于异常良好的状态，没有明显磨损；无需再翻新。
+                                        </option>
+                                        <option value="C" {% if form_data.get(
+                                        'conditions') == 'C' %}selected{% endif %}>
+                                        良好 - 极少磨损，没有重大的机械或刮蹭；可能需要有限的翻新。
+                                        </option>
+                                        <option value="A" {% if form_data.get(
+                                        'conditions') == 'A' %}selected{% endif %}>
+                                        普通 - 正常磨损。可能有一些机械和/或刮蹭，可能需要一些翻新。
+                                        </option>
+                                        <option value="R" {% if form_data.get(
+                                        'conditions') == 'R' %}selected{% endif %}>
+                                        粗糙 - 需要维修的几个机械和/或刮蹭。
+                                        </option>
+                                        <option value="D" {% if form_data.get(
+                                        'conditions') == 'D' %}selected{% endif %}>
+                                        受损 - 有重大机械和/或车身损坏可能无法安全驾驶。
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h6>这辆车曾经有过事故吗？</h6>
+                            <div style="margin-top: 5px; display: inline-block;" class="form-group radio-group">
+                                <div class="custom-radio" style="display: inline-block; margin-right: 10px;">
+                                    <input type="radio" name="accident" class="custom-control-input" required
+                                           id="accident-radio1" value="No" onclick="toggleSelectInput(false)"
+                                           {% if form_data.get('accident') == 'No' %} checked {% endif %}>
+                                    <label class="custom-control-label" for="accident-radio1">从来没有</label>
+                                </div>
+                                <div class="custom-radio" style="display: inline-block;">
+                                    <input type="radio" name="accident" class="custom-control-input" required
+                                           id="accident-radio2" value="Yes" onclick="toggleSelectInput(true)"
+                                           {% if form_data.get('accident') == 'Yes' %} checked {% endif %}>
+                                    <label class="custom-control-label" for="accident-radio2">有</label>
+                                </div>
+                            </div>
+                            <h6>目前是否存在任何机械或其他问题？</h6>
+                            <div class="form-group check-group" style="margin-top: 5px;">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customControlValidation1"
+                                           name="mechanical-issue" value="None observed"
+                                           {% if 'None observed' in form_data.get('mechanical-issue', []) or
+                                    form_data.get('None observed') == [] %} checked {% endif %}
+                                    onclick="handleNoneObserved(this)">
+                                    <label class="custom-control-label" for="customControlValidation1">没有问题</label>
+                                </div>
+                            </div>
+                            <div class="form-group check-group">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customControlValidation2"
+                                           name="mechanical-issue" value="AC issues"
+                                           {% if 'AC issues' in form_data.get('mechanical-issue', []) %}
+                                    checked {% endif %} onclick="handleOtherCheckboxes(this)">
+                                    <label class="custom-control-label" for="customControlValidation2">空调问题</label>
+                                </div>
+                            </div>
+                            <div class="form-group check-group">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customControlValidation3"
+                                           name="mechanical-issue" value="Brake issues"
+                                           {% if 'Brake issues' in form_data.get('mechanical-issue', []) %}
+                                    checked {% endif %} onclick="handleOtherCheckboxes(this)">
+                                    <label class="custom-control-label" for="customControlValidation3">刹车问题</label>
+                                </div>
+                            </div>
+                            <div class="form-group check-group">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customControlValidation4"
+                                           name="mechanical-issue" value="Frame damage"
+                                           {% if 'Frame damage' in form_data.get('mechanical-issue', []) %}
+                                    checked {% endif %} onclick="handleOtherCheckboxes(this)">
+                                    <label class="custom-control-label" for="customControlValidation4">车架损坏</label>
+                                </div>
+                            </div>
+                            <div class="form-group check-group">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customControlValidation5"
+                                           name="mechanical-issue" value="Missing standard equipment"
+                                           {% if 'Missing standard equipment' in form_data.get('mechanical-issue', [])
+                                    %} checked {% endif %} onclick="handleOtherCheckboxes(this)">
+                                    <label class="custom-control-label" for="customControlValidation5">基本设备损坏（如大灯，转向灯）</label>
+                                </div>
+                            </div>
+                            <div class="form-group check-group">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customControlValidation6"
+                                           name="mechanical-issue" value="Noticeable smoke, pet, or mildew odor"
+                                           {% if 'Noticeable smoke, pet, or mildew odor' in
+                                    form_data.get('mechanical-issue', [])%} checked {% endif %}
+                                    onclick="handleOtherCheckboxes(this)">
+                                    <label class="custom-control-label" for="customControlValidation6">明显的烟味、宠物味或霉味</label>
+                                </div>
+                            </div>
+                            <div class="form-group check-group">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customControlValidation7"
+                                           name="mechanical-issue" value="Suspension issues"
+                                           {% if 'Suspension issues' in form_data.get('mechanical-issue', []) %}
+                                    checked {% endif %} onclick="handleOtherCheckboxes(this)">
+                                    <label class="custom-control-label" for="customControlValidation7">悬挂问题</label>
+                                </div>
+                            </div>
+                            <div class="form-group check-group">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customControlValidation8"
+                                           name="mechanical-issue" value="Other issues"
+                                           {% if 'Other issues' in form_data.get('mechanical-issue', [])[-1] %}
+                                    checked {% endif %} onclick="handleOtherIssuesCheckbox(this)">
+                                    <label class="custom-control-label" for="customControlValidation8">其他问题</label>
+                                </div>
+                            </div>
+                            <div id="otherIssuesInput" class="form-group"
+                                 style="display: {% if 'Other issues' in form_data.get('mechanical-issue', [])[-1] %}block{% else %}none{% endif %};">
+                                <input type="text" class="form-control" id="input-other" name="input-other"
+                                       value="{{ form_data.get('input-other', '') }}">
+                            </div>
+                            <h6>引擎方面是否有任何问题？</h6>
+                            <div style="margin-top: 5px; display: inline-block;" class="form-group radio-group">
+                                <div class="custom-radio" style="display: inline-block; margin-right: 10px;">
+                                    <input type="radio" name="engine" class="custom-control-input"
+                                           id="engine-radio1" value="No" required
+                                           onclick="toggleElementVisibility('No', 'engineSelector')"
+                                           {% if form_data.get('engine') == 'No' %} checked {% endif %}>
+                                    <label class="custom-control-label" for="engine-radio1">否</label>
+                                </div>
+                                <div class="custom-radio" style="display: inline-block;">
+                                    <input type="radio" name="engine" class="custom-control-input"
+                                           id="engine-radio2" value="Yes" required
+                                           onclick="toggleElementVisibility('Yes', 'engineSelector')"
+                                           {% if form_data.get('engine') == 'Yes' %} checked {% endif %}>
+                                    <label class="custom-control-label" for="engine-radio2">是</label>
+                                </div>
+                            </div>
+                            <div style="margin-top: 5px; display: {% if form_data.get('engine') == 'Yes' %}block{% else %}none{% endif %};"
+                                 class="form-group country-select"
+                                 id="engineSelector">
+                                <div class="select-input choose-country">
+                                    <span></span>
+                                    <select id="input-engine-issues" name="engine-issues" class="form-control" required>
+                                        <option value="E" {% if form_data.get(
+                                        'engine-issues') == 'E' %}selected{% endif %}>发动机异响</option>
+                                        <option value="R" {% if form_data.get(
+                                        'engine-issues') == 'R' %}selected{% endif %}>运行不正常</option>
+                                        <option value="N" {% if form_data.get(
+                                        'engine-issues') == 'N' %}selected{% endif %}>无法启动</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h6>变速器方面是否有任何问题？</h6>
+                            <div style="margin-top: 5px; display: inline-block;" class="form-group radio-group">
+                                <div class="custom-radio" style="display: inline-block; margin-right: 10px;">
+                                    <input type="radio" name="transmission-issues" class="custom-control-input"
+                                           id="transmission-radio1" value="No" required
+                                           onclick="toggleElementVisibility('No', 'transmissionSelector')"
+                                           {% if form_data.get('transmission-issues') == 'No' %} checked {% endif %}>
+                                    <label class="custom-control-label" for="transmission-radio1">否</label>
+                                </div>
+                                <div class="custom-radio" style="display: inline-block;">
+                                    <input type="radio" name="transmission-issues" class="custom-control-input"
+                                           id="transmission-radio2" value="Yes" required
+                                           onclick="toggleElementVisibility('Yes', 'transmissionSelector')"
+                                           {% if form_data.get('transmission-issues') == 'Yes' %} checked {% endif %} >
+                                    <label class="custom-control-label" for="transmission-radio2">是</label>
+                                </div>
+                            </div>
+                            <div style="margin-top: 5px; display: {% if form_data.get('transmission-issues') == 'Yes' %}block{% else %}none{% endif %};"
+                                 class="form-group country-select" id="transmissionSelector">
+                                <div class="select-input choose-country">
+                                    <span></span>
+                                    <select id="input-transmission" name="input-transmission" class="form-control"
+                                            required>
+                                        <option value="C" {% if form_data.get(
+                                        'input-transmission') == 'C' %}selected{% endif %}>离合器需要维修</option>
+                                        <option value="M" {% if form_data.get(
+                                        'input-transmission') == 'M' %}selected{% endif %}>缺失挡位</option>
+                                        <option value="N" {% if form_data.get(
+                                        'input-transmission') == 'N' %}selected{% endif %}>无法进挡</option>
+                                        <option value="S" {% if form_data.get(
+                                        'input-transmission') == 'S' %}selected{% endif %}>换挡困难</option>
+                                        <option value="Sl" {% if form_data.get(
+                                        'input-transmission') == 'Sl' %}selected{% endif %}>打滑</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h6>是否有需要喷漆或修理车身的部件？</h6>
+                            <div style="margin-top: 5px; display: inline-block;" class="form-group radio-group">
+                                <div class="custom-radio" style="display: inline-block; margin-right: 10px;">
+                                    <input type="radio" name="paint-issues" class="custom-control-input"
+                                           id="paint-radio1" value="No" required
+                                           onclick="toggleElementVisibility('No', 'paintSelector')"
+                                           {% if form_data.get('paint-issues') == 'No' %} checked {% endif %}>
+                                    <label class="custom-control-label" for="paint-radio1">否</label>
+                                </div>
+                                <div class="custom-radio" style="display: inline-block;">
+                                    <input type="radio" name="paint-issues" class="custom-control-input"
+                                           id="paint-radio2" value="Yes" required
+                                           onclick="toggleElementVisibility('Yes', 'paintSelector')"
+                                           {% if form_data.get('paint-issues') == 'Yes' %} checked {% endif %}>
+                                    <label class="custom-control-label" for="paint-radio2">是</label>
+                                </div>
+                            </div>
+                            <div style="margin-top: 5px; display: {% if form_data.get('paint-issues') == 'Yes' %}block{% else %}none{% endif %};"
+                                 class="form-group country-select" id="paintSelector">
+                                <span>How many?</span>
+                                <div class="select-input choose-country">
+                                    <select id="input-paint" name="input-paint" class="form-control" required>
+                                        <option value="O" {% if form_data.get(
+                                        'input-paint') == 'O' %}selected{% endif %}>一处</option>
+                                        <option value="T" {% if form_data.get(
+                                        'input-paint') == 'T' %}selected{% endif %}>两处</option>
+                                        <option value="Th" {% if form_data.get(
+                                        'input-paint') == 'Th' %}selected{% endif %}>三处或更多</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h6>目前是否有任何警告灯亮起？</h6>
+                            <div style="margin-top: 5px; display: inline-block;" class="form-group radio-group">
+                                <div class="custom-radio" style="display: inline-block; margin-right: 10px;">
+                                    <input type="radio" name="warningLights-issues" class="custom-control-input"
+                                           id="warningLights-radio1" value="No" required
+                                           {% if form_data.get('warningLights-issues') == 'No' %} checked {% endif %}
+                                    onclick="toggleElementVisibility('No', 'warningLightsSelector')">
+                                    <label class="custom-control-label" for="warningLights-radio1">否</label>
+                                </div>
+                                <div class="custom-radio" style="display: inline-block;">
+                                    <input type="radio" name="warningLights-issues" class="custom-control-input"
+                                           id="warningLights-radio2" value="Yes" required
+                                           {% if form_data.get('warningLights-issues') == 'Yes' %} checked {% endif %}
+                                    onclick="toggleElementVisibility('Yes', 'warningLightsSelector')">
+                                    <label class="custom-control-label" for="warningLights-radio2">是</label>
+                                </div>
+                            </div>
+                            <div style="margin-top: 5px; display: {% if form_data.get('warningLights-issues') == 'Yes' %}block{% else %}none{% endif %};"
+                                 class="form-group country-select" id="warningLightsSelector">
+                                <span></span>
+                                <div class="select-input choose-country">
+                                    <select id="input-warningLights" name="input-warningLights" class="form-control"
+                                            required>
+                                        <option value="C" {% if form_data.get(
+                                        'input-warningLights') == 'C' %}selected{% endif %}>发动机故障</option>
+                                        <option value="A" {% if form_data.get(
+                                        'input-warningLights') == 'A' %}selected{% endif %}>刹车系统故障</option>
+                                        <option value="4" {% if form_data.get(
+                                        'input-warningLights') == '4' %}selected{% endif %}>四驱系统需要维修</option>
+                                        <option value="Ai" {% if form_data.get(
+                                        'input-warningLights') == 'Ai' %}selected{% endif %}>安全气囊 </option>
+                                        <option value="T" {% if form_data.get(
+                                        'input-warningLights') == 'T' %}selected{% endif %}>变速器 </option>
+                                        <option value="O" {% if form_data.get(
+                                        'input-warningLights') == 'O' %}selected{% endif %}>其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="otherWarningLightsInput" class="form-group"
+                                 style="display: {% if form_data.get('input-warningLights', '') == 'Other' %}block{% else %}none{% endif %};">
+                                <input type="text" class="form-control" id="input-warningLights-other"
+                                       name="input-warningLights-other"
+                                       value="{{ form_data.get('input-warningLights-other', '') }}">
+                            </div>
+                            <h6>车辆上是否有任何穿孔性锈蚀？</h6>
+                            <div style="margin-top: 5px; display: inline-block;" class="form-group radio-group">
+                                <div class="custom-radio" style="display: inline-block; margin-right: 10px;">
+                                    <input type="radio" name="rust-issues" class="custom-control-input"
+                                           id="rust-radio1" value="No" required
+                                           {% if form_data.get('rust-issues') == 'No' %} checked {% endif %}
+                                    onclick="toggleElementVisibility('No', 'rustSelector')">
+                                    <label class="custom-control-label" for="rust-radio1">否</label>
+                                </div>
+                                <div class="custom-radio" style="display: inline-block;">
+                                    <input type="radio" name="rust-issues" class="custom-control-input"
+                                           id="rust-radio2" value="Yes" required
+                                           {% if form_data.get('rust-issues') == 'Yes' %} checked {% endif %}
+                                    onclick="toggleElementVisibility('Yes', 'rustSelector')">
+                                    <label class="custom-control-label" for="rust-radio2">是</label>
+                                </div>
+                            </div>
+                            <div style="margin-top: 5px; display: {% if form_data.get('rust-issues') == 'Yes' %}block{% else %}none{% endif %};"
+                                 class="form-group country-select" id="rustSelector">
+                                <span></span>
+                                <div class="select-input choose-country">
+                                    <select id="input-rust" name="input-rust" class="form-control">
+                                        <option value="Yb" {% if form_data.get(
+                                        'input-rust') == 'Yb' %}selected{% endif %}>是 - 在车身上</option>
+                                        <option value="Yn" {% if form_data.get(
+                                        'input-rust') == 'Yn' %}selected{% endif %}>是 - 在底盘下</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h6>车内有没有任何部件损坏或无法使用？</h6>
+                            <div style="margin-top: 5px; display: inline-block;" class="form-group radio-group">
+                                <div class="custom-radio" style="display: inline-block; margin-right: 10px;">
+                                    <input type="radio" name="interior-issues" class="custom-control-input"
+                                           id="interior-radio1" value="No" required
+                                           {% if form_data.get('interior-issues') == 'No' %} checked {% endif %}
+                                    onclick="toggleElementVisibility('No', 'interiorSelector')">
+                                    <label class="custom-control-label" for="interior-radio1">否</label>
+                                </div>
+                                <div class="custom-radio" style="display: inline-block;">
+                                    <input type="radio" name="interior-issues" class="custom-control-input"
+                                           id="interior-radio2" value="Yes" required
+                                           {% if form_data.get('interior-issues') == 'Yes' %} checked {% endif %}
+                                    onclick="toggleElementVisibility('Yes', 'interiorSelector')">
+                                    <label class="custom-control-label" for="interior-radio2">是</label>
+                                </div>
+                            </div>
+                            <div style="margin-top: 5px; display: {% if form_data.get('interior-issues') == 'Yes' %}block{% else %}none{% endif %};"
+                                 class="form-group country-select" id="interiorSelector">
+                                <span></span>
+                                <div class="select-input choose-country">
+                                    <select id="input-interior" name="input-interior" class="form-control">
+                                        <option value="O" {% if form_data.get(
+                                        'input-interior') == 'O' %}selected{% endif %}>一处</option>
+                                        <option value="T" {% if form_data.get(
+                                        'input-interior') == 'T' %}selected{% endif %}>两处</option>
+                                        <option value="Th" {% if form_data.get(
+                                        'input-interior') == 'Th' %}selected{% endif %}>三处或更多</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h6>车辆是否进行过升高或降低处理？</h6>
+                            <div style="margin-top: 5px; display: inline-block;" class="form-group radio-group">
+                                <div class="custom-radio" style="display: inline-block; margin-right: 10px;">
+                                    <input type="radio" name="lift" class="custom-control-input"
+                                           id="lift-radio1" value="No" required
+                                           {% if form_data.get('lift') == 'No' %} checked {% endif %}>
+                                    <label class="custom-control-label" for="lift-radio1">否</label>
+                                </div>
+                                <div class="custom-radio" style="display: inline-block;">
+                                    <input type="radio" name="lift" class="custom-control-input"
+                                           id="lift-radio2" value="Yes" required
+                                           {% if form_data.get('lift') == 'Yes' %} checked {% endif %}>
+                                    <label class="custom-control-label" for="lift-radio2">是</label>
+                                </div>
+                            </div>
+                            <h6>发动机是否进行过改装？</h6>
+                            <div style="margin-top: 5px; display: inline-block;" class="form-group radio-group">
+                                <div class="custom-radio" style="display: inline-block; margin-right: 10px;">
+                                    <input type="radio" name="engine-modifications" class="custom-control-input"
+                                           id="engine-modifications-radio1" value="No" required
+                                           {% if form_data.get('engine-modifications') == 'No' %} checked {% endif %}>
+                                    <label class="custom-control-label" for="engine-modifications-radio1">否</label>
+                                </div>
+                                <div class="custom-radio" style="display: inline-block;">
+                                    <input type="radio" name="engine-modifications" class="custom-control-input"
+                                           id="engine-modifications-radio2" value="Yes" required
+                                           {% if form_data.get('engine-modifications') == 'Yes' %} checked {% endif %}>
+                                    <label class="custom-control-label" for="engine-modifications-radio2">是</label>
+                                </div>
+                            </div>
+                            <h6>车内有没有破损、撕裂或污渍？</h6>
+                            <div style="margin-top: 5px; display: inline-block;" class="form-group radio-group">
+                                <div class="custom-radio" style="display: inline-block; margin-right: 10px;">
+                                    <input type="radio" name="interior-parts-issues" class="custom-control-input"
+                                           id="interior-parts-radio1" value="No" required
+                                           {% if form_data.get('interior-parts-issues') == 'No' %} checked {% endif %}
+                                    onclick="toggleElementVisibility('No', 'interiorPartsSelector')">
+                                    <label class="custom-control-label" for="interior-parts-radio1">否</label>
+                                </div>
+                                <div class="custom-radio" style="display: inline-block;">
+                                    <input type="radio" name="interior-parts-issues" class="custom-control-input"
+                                           id="interior-parts-radio2" value="Yes" required
+                                           {% if form_data.get('interior-parts-issues') == 'Yes' %} checked {% endif %}
+                                    onclick="toggleElementVisibility('Yes', 'interiorPartsSelector')">
+                                    <label class="custom-control-label" for="interior-parts-radio2">是</label>
+                                </div>
+                            </div>
+                            <div style="margin-top: 5px; display: {% if form_data.get('interior-parts-issues') == 'Yes' %}block{% else %}none{% endif %};"
+                                 class="form-group country-select" id="interiorPartsSelector">
+                                <span></span>
+                                <div class="select-input choose-country">
+                                    <select id="input-interior-parts" name="input-interior-parts" class="form-control"
+                                            required>
+                                        <option value="O" {% if form_data.get(
+                                        'input-interior-parts') == 'O' %}selected{% endif %}>一处</option>
+                                        <option value="T" {% if form_data.get(
+                                        'input-interior-parts') == 'T' %}selected{% endif %}>两处</option>
+                                        <option value="Th" {% if form_data.get(
+                                        'input-interior-parts') == 'Th' %}selected{% endif %}>三处或更多</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h6>是否需要更换任何轮胎？</h6>
+                            <div style="margin-top: 5px; display: inline-block;" class="form-group radio-group">
+                                <div class="custom-radio" style="display: inline-block; margin-right: 10px;">
+                                    <input type="radio" name="tires-issues" class="custom-control-input"
+                                           id="tires-radio1" value="No" required
+                                           {% if form_data.get('tires-issues') == 'No' %} checked {% endif %}
+                                    onclick="toggleElementVisibility('No', 'tiresSelector')">
+                                    <label class="custom-control-label" for="tires-radio1">否</label>
+                                </div>
+                                <div class="custom-radio" style="display: inline-block;">
+                                    <input type="radio" name="tires-issues" class="custom-control-input"
+                                           id="tires-radio2" value="Yes" required
+                                           {% if form_data.get('tires-issues') == 'Yes' %} checked {% endif %}
+                                    onclick="toggleElementVisibility('Yes', 'tiresSelector')">
+                                    <label class="custom-control-label" for="tires-radio2">是</label>
+                                </div>
+                            </div>
+                            <div style="margin-top: 5px; display: {% if form_data.get('tires-issues') == 'Yes' %}block{% else %}none{% endif %};"
+                                 class="form-group country-select" id="tiresSelector">
+                                <span></span>
+                                <div class="select-input choose-country">
+                                    <select id="input-tires" name="input-tires" class="form-control" required>
+                                        <option value="O" {% if form_data.get(
+                                        'input-tires') == 'O' %}selected{% endif %}>一个</option>
+                                        <option value="T" {% if form_data.get(
+                                        'input-tires') == 'T' %}selected{% endif %}>两个</option>
+                                        <option value="Th" {% if form_data.get(
+                                        'input-tires') == 'Th' %}selected{% endif %}>三个或更多</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="btn step-btn">下一页</button>
+                        </form>
+                    </div>
+                    <div class="form-steps"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+<!--        <div class="social-links">-->
+<!--            <a href="#"><i class="lab la-facebook-f"></i></a>-->
+<!--            <a href="#"><i class="lab la-twitter"></i></a>-->
+<!--            <a href="#"><i class="lab la-linkedin-in"></i></a>-->
+<!--            <a href="#"><i class="lab la-instagram"></i></a>-->
+<!--        </div>-->
+        <div class="copyright">
+            <p>Copyright © 2023 GentleCarmen. All Rights Reserved</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+<script>
+    // JavaScript to toggle the display of the input field based on the drop-down selection
+    const selectElement = document.getElementById("input-warningLights");
+    const otherWarningLightsInput = document.getElementById("otherWarningLightsInput");
+
+    selectElement.addEventListener("change", () => {
+        if (selectElement.value === "O") {
+            otherWarningLightsInput.style.display = "block";
+        } else {
+            otherWarningLightsInput.style.display = "none";
+        }
+    });
+</script>
+<script>
+$(document).ready(function() {
+	'use strict';
+
+  var progress = document.querySelectorAll('.form-steps');
+  var progressWidth = 50;
+  var currentStep = 2;
+
+  $('.total-step').html(progress.length);
+  $('.current-step').html(currentStep);
+
+  $('.progress-bar').width(progressWidth + '%');
+})
+</script>
+<script>
+function toggleElementVisibility(inputValue, elementId) {
+    var element = document.getElementById(elementId);
+
+    if (inputValue === 'Yes') {
+        element.style.display = 'block';
+    } else {
+        element.style.display = 'none';
+    }
+}
+</script>
+<script>
+function handleNoneObserved(checkbox) {
+    if (checkbox.checked) {
+        // If "None observed" checkbox is checked, uncheck the other checkboxes
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((cb) => {
+            if (cb !== checkbox) {
+                cb.checked = false;
+            }
+        });
+        const otherIssuesInput = document.getElementById('otherIssuesInput');
+        otherIssuesInput.style.display = 'none'; // Hide the input field
+    }
+}
+
+function handleOtherCheckboxes(checkbox) {
+    // If any of the other checkboxes are checked, uncheck the "None observed" checkbox
+    const noneObservedCheckbox = document.getElementById('customControlValidation1');
+    if (checkbox.checked) {
+        noneObservedCheckbox.checked = false;
+    }
+}
+
+function handleOtherIssuesCheckbox(checkbox) {
+    const otherIssuesInput = document.getElementById('otherIssuesInput');
+    if (checkbox.checked) {
+        otherIssuesInput.style.display = 'block'; // Show the input field
+    } else {
+        otherIssuesInput.style.display = 'none'; // Hide the input field
+    }
+}
+</script>
+<!-- Add this script to handle the form submission -->
+</body>
+</html>
