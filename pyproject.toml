@@ -1,6 +1,7 @@
 [project]
 name = "AutoIronMan_SellCars"
 version = "1.0.0"
+description = "car sells automation"
 dependencies = [
     "flask",
 ]
